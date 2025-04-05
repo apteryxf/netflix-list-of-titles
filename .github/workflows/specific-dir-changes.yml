@@ -12,8 +12,6 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 4
 
       - name: Fetch base branch
         run: git fetch origin master
@@ -21,7 +19,7 @@ jobs:
       - name: Check for changes
         id: check
         run: |
-            all=$(git diff --name-only origin/master...HEAD)
+            all=$(git diff --name-only origin/master)
             matched=$(echo "$all" | grep -c '^.github/')
             total=$(echo "$all" | wc -l)
             if [ "$matched" -eq "$total" ]; then
