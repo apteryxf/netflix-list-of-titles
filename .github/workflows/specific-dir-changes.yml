@@ -26,6 +26,7 @@ jobs:
             total=$(echo "$all" | wc -l)
             if [ "$matched" -eq "$total" ]; then
                 echo 'only-gha=true' >> $GITHUB_OUTPUT
+            fi
 
       - name: Check 2
         if: ${{ steps.check.outputs.only-gha != 'true' }}
