@@ -12,6 +12,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          fetch-depht: 4
 
       - name: Fetch base branch
         run: git fetch origin master
