@@ -1,4 +1,4 @@
-name: actions-fail
+name: specific-dir-changes
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
   pull_request:
 
 jobs:
-  fail-test:
+  specific-dir-changes:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -19,7 +19,6 @@ jobs:
       - name: Check for changes
         id: check
         run: |
-            git fetch origin ${{ github.base_ref }}
             all=$(git diff --name-only origin/${{ github.base_ref }}...HEAD)
             matched=$(echo "$all" | grep -c '^.github/')
             total=$(echo "$all" | wc -l)
